@@ -4,37 +4,327 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Business English Hub – Mr. Hùng</title>
+  <style>
+    :root {
+      --primary: #0d47a1;
+      --accent: #ff9800;
+      --dark: #212121;
+      --light: #f5f7fa;
+      --success: #4caf50;
+      --shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family:'Segoe UI',system-ui,sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      line-height:1.6;
+    }
+    .topbar {
+      background:var(--primary);
+      color:white;
+      padding:1rem;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:var(--shadow);
+    }
+    .topbar-inner {
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .site-title { font-size:1.6rem; font-weight:bold; }
+    .xp-area { display:flex; align-items:center; gap:1rem; }
+    .xp-bar-wrap {
+      width:140px;
+      height:10px;
+      background:rgba(255,255,255,0.2);
+      border-radius:5px;
+      overflow:hidden;
+    }
+    .xp-bar-fill {
+      height:100%;
+      background:var(--accent);
+      width:0%;
+      transition:width .6s;
+    }
+    nav {
+      background:#263238;
+      padding:0.8rem;
+    }
+    .nav-tabs {
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.5rem;
+      justify-content:center;
+    }
+    .nav-tab {
+      background:rgba(255,255,255,0.1);
+      color:white;
+      border:none;
+      padding:0.8rem 1.4rem;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .nav-tab.active {
+      background:white;
+      color:var(--primary);
+    }
+    .page {
+      display:none;
+      max-width:1100px;
+      margin:2rem auto;
+      padding:0 1rem;
+    }
+    .page.active { display:block; }
+    .card {
+      background:white;
+      border-radius:8px;
+      padding:1.8rem;
+      margin-bottom:1.8rem;
+      box-shadow:var(--shadow);
+    }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:1.2rem;
+    }
+    .btn {
+      background:var(--primary);
+      color:white;
+      border:none;
+      padding:0.8rem 1.5rem;
+      border-radius:6px;
+      cursor:pointer;
+      transition:0.2s;
+    }
+    .btn:hover { background:#1565c0; }
+    .flashcard {
+      height:220px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+    .flashcard-inner {
+      position:relative;
+      width:100%;
+      height:100%;
+      transition:transform .6s;
+      transform-style:preserve-3d;
+    }
+    .flashcard.flipped .flashcard-inner { transform:rotateY(180deg); }
+    .flashcard-front, .flashcard-back {
+      position:absolute;
+      width:100%;
+      height:100%;
+      backface-visibility:hidden;
+      border-radius:12px;
+      padding:1.5rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .flashcard-front { background:var(--primary); color:white; }
+    .flashcard-back { background:white; transform:rotateY(180deg); border:2px solid var(--primary); }
+    .toast {
+      position:fixed;
+      top:20px;
+      right:20px;
+      background:var(--success);
+      color:white;
+      padding:1rem 1.5rem;
+      border-radius:8px;
+      box-shadow:var(--shadow);
+      z-index:999;
+      opacity:0;
+      transition:opacity .4s;
+    }
+    .toast.show { opacity:1; }
+  </style>
 </head>
 <body>
-  <h1>Welcome, Mr. Hùng</h1>
-  <p>This is your private Business English learning website.</p>
-  <p>We will add vocabulary, dictation, role-plays, and more step by step.</p>
-</body>
-</html>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business English Hub – Mr. Hùng</title>
-<style>
-:root {
-  --primary: #0d47a1; --accent: #ff9800; --dark: #212121; --light: #f5f7fa;
-  --success: #4caf50; --shadow: 0 4px 12px rgba(0,0,0,0.12);
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="site-title">Business English Hub – Mr. Hùng</div>
+    <div class="xp-area">
+      XP: <span id="xp-count">0</span>
+      <div class="xp-bar-wrap"><div class="xp-bar-fill" id="xp-bar"></div></div>
+      Lv <span id="level">1</span>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-page="home">Home</button>
+    <button class="nav-tab" data-page="profile">Profile</button>
+    <button class="nav-tab" data-page="roadmap">Roadmap</button>
+    <button class="nav-tab" data-page="vocab">Vocabulary</button>
+    <button class="nav-tab" data-page="listening">Listening & Speaking</button>
+    <button class="nav-tab" data-page="roleplay">Role-Play</button>
+    <button class="nav-tab" data-page="practice">Writing</button>
+    <button class="nav-tab" data-page="progress">Progress</button>
+  </div>
+</nav>
+
+<div id="toast-container"></div>
+
+<!-- Home Page -->
+<div id="page-home" class="page active">
+  <div class="card">
+    <h1>Welcome, Mr. Hùng</h1>
+    <p>This is your private, professional Business English learning platform.</p>
+    <p><strong>Focus:</strong> Industrial equipment communication, technical explanations, negotiations, meetings, emails.</p>
+    <div class="grid" style="margin-top:2rem;">
+      <div class="card"><h3>Current Goal</h3><p>B1 → B2 level in 6–12 months</p></div>
+      <div class="card"><h3>Next Focus</h3><p>Project update meetings & technical specs</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Page -->
+<div id="page-profile" class="page">
+  <div class="card">
+    <h1>Learner Profile</h1>
+    <p><strong>Name:</strong> Mr. Hùng</p>
+    <p><strong>Position:</strong> Business Manager – Industrial Equipment Solutions</p>
+    <p><strong>Company:</strong> <a href="https://fil.com.vn/" target="_blank">FIL Vietnam</a></p>
+    <p><strong>Key Responsibilities:</strong></p>
+    <ul>
+      <li>Managing nationwide operations</li>
+      <li>Communication with international manufacturers</li>
+      <li>Hosting foreign partners & factory visits</li>
+      <li>Meetings, negotiations, technical discussions</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Roadmap Page -->
+<div id="page-roadmap" class="page">
+  <div class="card">
+    <h1>Learning Roadmap</h1>
+    <h2>Phase 1 (Months 1–3) – Foundations</h2>
+    <ul>
+      <li>Introducing company & products</li>
+      <li>Basic meeting phrases</li>
+      <li>Asking clarification questions</li>
+      <li>Listening to international accents</li>
+    </ul>
+    <h2>Phase 2 (Months 3–6) – Expansion</h2>
+    <ul>
+      <li>Negotiation language</li>
+      <li>Technical explanations</li>
+      <li>Professional email writing</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Vocabulary Page (with flip cards) -->
+<div id="page-vocab" class="page">
+  <div class="card">
+    <h1>Industrial Vocabulary</h1>
+    <div class="grid">
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <h3>air compressor</h3>
+            <small>Click to flip</small>
+          </div>
+          <div class="flashcard-back">
+            <p>A machine that converts power into pressurized air for tools and machinery.</p>
+            <p><em>Example:</em> We supply high-efficiency air compressors for factories.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <h3>dust collection system</h3>
+            <small>Click to flip</small>
+          </div>
+          <div class="flashcard-back">
+            <p>Equipment that captures dust and particles to improve air quality.</p>
+            <p><em>Example:</em> Proper dust collection extends machine life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <h3>technical specification</h3>
+            <small>Click to flip</small>
+          </div>
+          <div class="flashcard-back">
+            <p>Detailed description of product requirements and performance.</p>
+            <p><em>Example:</em> Please review the technical specs before ordering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Listening & Speaking (from previous) -->
+<div id="page-listening" class="page">
+  <div class="card">
+    <h1>Listening & Speaking Practice</h1>
+    <!-- Paste your dictation/shadowing code here later -->
+    <p>Dictation & shadowing exercises coming soon...</p>
+  </div>
+</div>
+
+<!-- Placeholder for other pages -->
+<div id="page-roleplay" class="page"><div class="card"><h1>Role-Play</h1><p>Coming soon...</p></div></div>
+<div id="page-practice" class="page"><div class="card"><h1>Writing Practice</h1><p>Coming soon...</p></div></div>
+<div id="page-progress" class="page"><div class="card"><h1>Progress Tracker</h1><p>Coming soon...</p></div></div>
+
+<script>
+// Simple XP & Toast
+let xp = 0;
+function addXP(amount) {
+  xp += amount;
+  document.getElementById('xp-count').textContent = xp;
+  const lvl = Math.floor(xp / 100) + 1;
+  document.getElementById('level').textContent = lvl;
+  document.getElementById('xp-bar').style.width = (xp % 100) + '%';
+  showToast(`+${amount} XP`);
 }
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--light); color:var(--dark); }
-.topbar { background:var(--primary); color:white; padding:1rem; position:sticky; top:0; z-index:100; }
-.topbar-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-.site-title { font-size:1.4rem; font-weight:bold; }
-.xp-area { display:flex; align-items:center; gap:1rem; }
-.xp-bar-wrap { width:140px; height:10px; background:rgba(255,255,255,0.2); border-radius:5px; overflow:hidden; }
-.xp-bar-fill { height:100%; background:var(--accent); width:0%; transition:width .6s; }
-nav { background:#263238; padding:0.8rem; }
-.nav-tabs { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:0.5rem; }
-.nav-tab { background:rgba(255,255,255,0.1); color:white; border:none; padding:0.8rem 1.2rem; border-radius:6px; cursor:pointer; }
-.nav-tab.active { background:white; color:var(--primary); }
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.getElementById('toast-container').appendChild(t);
+  setTimeout(() => t.classList.add('show'), 10);
+  setTimeout(() => t.remove(), 3000);
+}
+
+// Navigation
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.nav-tab[data-page="${page}"]`).classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.onclick = () => showPage(tab.dataset.page);
+  });
+  showPage('home');
+});
+</script>
+</body>
+</html>.nav-tab.active { background:white; color:var(--primary); }
 .page { display:none; max-width:1100px; margin:2rem auto; padding:0 1rem; }
 .page.active { display:block; }
 .card { background:white; border-radius:8px; padding:1.5rem; margin-bottom:1.5rem; box-shadow:var(--shadow); }
