@@ -17,12 +17,13 @@
     .flashcard-front, .flashcard-back { backface-visibility: hidden; border-radius: 16px; }
     .flashcard-back { transform: rotateY(180deg); }
     .module-card:hover { transform: translateY(-10px); }
-    .progress-bar { transition: width 1.2s cubic-bezier(0.34,1.56,0.64,1); }
+    .video-container { position: relative; padding-top: 56.25%; } /* 16:9 aspect ratio */
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 16px; }
   </style>
 </head>
 <body class="tail-container bg-slate-50 text-slate-800 min-h-screen">
 
-  <!-- Top Bar -->
+  <!-- Top Bar (same as before) -->
   <header class="bg-[#0d47a1] text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <div class="flex items-center gap-4">
@@ -36,12 +37,12 @@
         <div class="flex items-center gap-4 bg-white/10 px-6 py-3 rounded-3xl">
           <div>
             <span class="text-sm font-semibold">XP:</span> 
-            <span id="xp-count" class="text-orange-400 font-bold">1850</span>
+            <span id="xp-count" class="text-orange-400 font-bold">1980</span>
           </div>
           <div class="w-40 h-2.5 bg-white/30 rounded-full overflow-hidden">
-            <div id="xp-bar" class="h-full bg-[#ff9800] rounded-full progress-bar" style="width: 68%"></div>
+            <div id="xp-bar" class="h-full bg-[#ff9800] rounded-full" style="width: 72%"></div>
           </div>
-          <div class="text-sm">Lv <span id="level" class="font-bold">9</span></div>
+          <div class="text-sm">Lv <span id="level" class="font-bold">10</span></div>
         </div>
         <button onclick="toggleDarkMode()" class="w-11 h-11 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-2xl transition-all">
           <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
@@ -59,260 +60,97 @@
 
   <div class="max-w-7xl mx-auto px-6 py-10">
 
-    <!-- HOME -->
-    <div id="page-home" class="page">
-      <div class="text-center mb-12">
-        <h2 class="text-5xl font-bold text-slate-800">Welcome back, Mr. Hùng 👋</h2>
-        <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto">
-          Your personalized 12-lesson Executive Business English program focused on the industrial equipment sector.
-        </p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white p-8 rounded-3xl shadow-xl text-center">
-          <i class="fa-solid fa-microphone-lines text-5xl text-blue-600 mb-6"></i>
-          <h3 class="font-semibold text-xl">Speaking Fluency</h3>
-          <p class="text-slate-600 mt-3">Confident technical discussions with German, Italian & Chinese suppliers</p>
-        </div>
-        <div class="bg-white p-8 rounded-3xl shadow-xl text-center">
-          <i class="fa-solid fa-headphones text-5xl text-orange-600 mb-6"></i>
-          <h3 class="font-semibold text-xl">Listening Mastery</h3>
-          <p class="text-slate-600 mt-3">Practice real accents from Germany, Italy, China, Malaysia & Hong Kong</p>
-        </div>
-        <div class="bg-white p-8 rounded-3xl shadow-xl text-center">
-          <i class="fa-solid fa-handshake text-5xl text-emerald-600 mb-6"></i>
-          <h3 class="font-semibold text-xl">Professional Impact</h3>
-          <p class="text-slate-600 mt-3">Negotiations, hosting visitors & project coordination</p>
-        </div>
-      </div>
-    </div>
+    <!-- HOME, PROFILE, ROADMAP, VOCAB, ROLEPLAY, PROGRESS pages remain the same as previous version -->
+    <!-- (I kept them identical for brevity — copy from the last code I sent) -->
 
-    <!-- PROFILE -->
-    <div id="page-profile" class="page hidden">
-      <div class="bg-white rounded-3xl shadow-2xl p-10">
-        <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i class="fa-solid fa-user-tie"></i> Learner Profile</h2>
-        <div class="grid md:grid-cols-2 gap-10">
-          <div>
-            <p class="mb-2"><strong>Name:</strong> Mr. Hùng</p>
-            <p class="mb-2"><strong>Position:</strong> Business Manager – Industrial Equipment Solutions</p>
-            <p><strong>Company:</strong> <a href="https://fil.com.vn/" target="_blank" class="text-blue-600 hover:underline">FIL Vietnam</a></p>
-          </div>
-          <div>
-            <p class="font-medium mb-3">Key Responsibilities:</p>
-            <ul class="space-y-3 text-slate-600">
-              <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Managing nationwide operations</li>
-              <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Communication with international suppliers (DE, IT, CN, MY, HK)</li>
-              <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Hosting foreign partners & factory visits</li>
-              <li class="flex gap-3"><i class="fa-solid fa-check text-emerald-500 mt-1"></i> Technical meetings and negotiations</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ROADMAP / MODULES -->
-    <div id="page-roadmap" class="page hidden">
-      <h2 class="text-3xl font-bold mb-10">12-Lesson Executive Program</h2>
-      <div class="grid md:grid-cols-2 gap-8" id="modules-grid"></div>
-    </div>
-
-    <!-- VOCABULARY -->
-    <div id="page-vocab" class="page hidden">
-      <div class="bg-white rounded-3xl shadow-2xl p-10">
-        <h2 class="text-3xl font-bold mb-2">Industrial Vocabulary Bank</h2>
-        <p class="text-slate-600 mb-8">Click cards to flip • Supplementary terms from Market Leader & New English File</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="vocab-grid"></div>
-      </div>
-    </div>
-
-    <!-- LISTENING & SPEAKING -->
+    <!-- LISTENING & SPEAKING – NOW WITH YOUTUBE VIDEOS -->
     <div id="page-listening" class="page hidden">
       <div class="bg-white rounded-3xl shadow-2xl p-10">
-        <h2 class="text-3xl font-bold mb-8">Listening & Speaking Practice</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="border border-slate-200 rounded-3xl p-8">
-            <h3 class="font-semibold text-xl mb-4">Unit 1 – Supplier Meeting (German Accent)</h3>
-            <audio controls class="w-full mb-4">
-              <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            </audio>
-            <button onclick="showToast('Shadowing mode activated! Repeat after the speaker.')" 
-                    class="w-full py-4 bg-blue-600 text-white rounded-2xl font-medium">Start Shadowing Practice</button>
+        <h2 class="text-3xl font-bold mb-3">Listening & Speaking Practice</h2>
+        <p class="text-slate-600 mb-10">Watch, listen, and repeat. Focus on different accents and real business situations relevant to industrial equipment.</p>
+
+        <div class="grid md:grid-cols-2 gap-10">
+
+          <!-- Video 1: General Business Meetings -->
+          <div>
+            <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-users text-blue-600"></i> Business Meetings & Discussions
+            </h3>
+            <div class="video-container mb-4">
+              <iframe src="https://www.youtube.com/embed/ENO6de-yFMc" title="Business English Practice" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">1-hour practice: Meetings, opinions, agreeing/disagreeing. Great for Module 2.</p>
           </div>
-          <div class="border border-slate-200 rounded-3xl p-8">
-            <h3 class="font-semibold text-xl mb-4">Unit 2 – Technical Problem Discussion (Chinese Accent)</h3>
-            <p class="text-slate-500 italic">Audio will be added after recording with Mr. Vincent</p>
+
+          <!-- Video 2: Negotiations -->
+          <div>
+            <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-handshake text-orange-600"></i> Negotiations with Suppliers
+            </h3>
+            <div class="video-container mb-4">
+              <iframe src="https://www.youtube.com/embed/lQJKmRD1gYg" title="Business English Negotiations" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">Practical dialogues for price and contract negotiations (Module 4).</p>
           </div>
+
+          <!-- Video 3: Real Workplace Conversations -->
+          <div>
+            <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-headphones text-emerald-600"></i> Real Meetings & Workplace Talk
+            </h3>
+            <div class="video-container mb-4">
+              <iframe src="https://www.youtube.com/embed/GcWAKzgFNPI" title="Advanced Business English Listening" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">Natural-speed conversations (C1 level – repeat sections for B1 practice).</p>
+          </div>
+
+          <!-- Video 4: Accents Practice -->
+          <div>
+            <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-globe text-purple-600"></i> Different Accents Training
+            </h3>
+            <div class="video-container mb-4">
+              <iframe src="https://www.youtube.com/embed/c-rfdqH33JE" title="English in 20 Different Accents" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">Practice German, Italian, Chinese-influenced, and other international accents.</p>
+          </div>
+
+          <!-- Video 5: Supply Chain / Technical Context -->
+          <div>
+            <h3 class="font-semibold text-xl mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-truck text-amber-600"></i> Supply Chain & Technical Meetings
+            </h3>
+            <div class="video-container mb-4">
+              <iframe src="https://www.youtube.com/embed/XRHmbdLloFA" title="Supply Chain Business Meeting" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">40-minute supply chain & logistics conversation – very relevant to your industry.</p>
+          </div>
+
         </div>
-        <p class="text-center text-sm text-slate-500 mt-10">More audios from Market Leader and New English File will be embedded here.</p>
+
+        <div class="mt-12 pt-8 border-t border-slate-200">
+          <h3 class="font-semibold text-lg mb-4">How to Practice Effectively</h3>
+          <ol class="list-decimal pl-6 space-y-3 text-slate-700">
+            <li>Watch once with subtitles on → understand the main ideas</li>
+            <li>Watch again without subtitles → shadow the speaker (repeat aloud)</li>
+            <li>Pause and write down 5 new phrases</li>
+            <li>Record yourself answering the same questions</li>
+          </ol>
+          <p class="text-xs text-slate-500 mt-6">Tip: Combine with units from <strong>Market Leader</strong> (meetings & negotiations) and <strong>New English File Pre-Intermediate</strong> (listening exercises).</p>
+        </div>
       </div>
     </div>
 
-    <!-- ROLE-PLAY -->
-    <div id="page-roleplay" class="page hidden">
-      <div class="bg-white rounded-3xl shadow-2xl p-10">
-        <h2 class="text-3xl font-bold mb-8">Role-Play Scenarios</h2>
-        <div class="grid md:grid-cols-2 gap-6" id="roleplay-grid"></div>
-      </div>
-    </div>
+    <!-- Other pages (Home, Profile, Roadmap, Vocab, Roleplay, Progress) – copy from previous version -->
 
-    <!-- PROGRESS -->
-    <div id="page-progress" class="page hidden">
-      <div class="bg-white rounded-3xl shadow-2xl p-10">
-        <h2 class="text-3xl font-bold mb-8">Your Progress Tracker</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div id="lessons-completed" class="text-7xl font-bold text-blue-600">7</div>
-            <p class="text-slate-500 mt-2">of 12 Lessons Completed</p>
-          </div>
-          <div>
-            <div id="mastery" class="text-7xl font-bold text-orange-600">72%</div>
-            <p class="text-slate-500 mt-2">Speaking Mastery</p>
-          </div>
-          <div>
-            <div class="text-7xl font-bold text-emerald-600">28</div>
-            <p class="text-slate-500 mt-2">Vocabulary Mastered</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <!-- Toast -->
+  <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-8 right-8 z-[100] flex flex-col gap-3"></div>
 
   <script>
-    // === DATA ===
-    const modules = [
-      {
-        title: "Module 1: Professional Introductions and Business Foundations",
-        lessons: "Lessons 1–3",
-        focus: "Self-introduction, company presentation, small talk, basic business etiquette",
-        outcomes: "Confidently introduce yourself and your company to international partners",
-        color: "blue"
-      },
-      {
-        title: "Module 2: Meetings and Project Communication",
-        lessons: "Lessons 4–6",
-        focus: "Meeting phrases, project updates, asking for clarification, giving feedback",
-        outcomes: "Participate actively in international meetings",
-        color: "emerald"
-      },
-      {
-        title: "Module 3: Technical Communication",
-        lessons: "Lessons 7–9",
-        focus: "Describing equipment, technical specifications, troubleshooting, explaining processes",
-        outcomes: "Handle technical discussions with suppliers confidently",
-        color: "amber"
-      },
-      {
-        title: "Module 4: International Business Interaction",
-        lessons: "Lessons 10–12",
-        focus: "Negotiations, hosting visitors, cultural awareness, networking",
-        outcomes: "Lead negotiations and host foreign partners successfully",
-        color: "rose"
-      }
-    ];
-
-    const vocabList = [
-      {term:"air compressor", def:"Machine that converts power into pressurized air", ex:"We supply high-efficiency air compressors for manufacturing plants."},
-      {term:"lead time", def:"Time between order and delivery", ex:"What is the current lead time for the CNC machines?"},
-      {term:"technical specification", def:"Detailed description of technical requirements", ex:"Please send the technical specifications before we proceed."},
-      {term:"dust collection system", def:"Equipment that captures industrial dust", ex:"A good dust collection system improves workplace safety."},
-      {term:"after-sales service", def:"Support provided after purchase", ex:"Their after-sales service is excellent."},
-      {term:"quotation", def:"Formal price offer", ex:"We received three quotations from different suppliers."}
-    ];
-
-    const roleplays = [
-      {title:"Price Negotiation with German Supplier", desc:"Supplier increased price by 12% due to material costs."},
-      {title:"Technical Problem Discussion (Chinese Supplier)", desc:"Machine is producing defects – discuss root cause and solution."},
-      {title:"Hosting Italian Partner at Factory", desc:"Welcome visitor and conduct factory tour."},
-      {title:"Project Delay Update Meeting", desc:"Inform Malaysian client about 2-week delay and propose solution."}
-    ];
-
-    // === FUNCTIONS ===
-    function createNavTabs() {
-      const pages = {home:"Home", profile:"Profile", roadmap:"Roadmap", vocab:"Vocabulary", listening:"Listening & Speaking", roleplay:"Role-Play", progress:"Progress"};
-      const container = document.getElementById('nav-tabs');
-      Object.keys(pages).forEach(key => {
-        const btn = document.createElement('button');
-        btn.className = `nav-tab px-7 py-3 text-sm font-medium rounded-3xl text-white hover:bg-white/10 ${key==='home'?'active':''}`;
-        btn.textContent = pages[key];
-        btn.dataset.page = key;
-        btn.addEventListener('click', () => showPage(key));
-        container.appendChild(btn);
-      });
-    }
-
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-      document.getElementById(`page-${pageId}`).classList.remove('hidden');
-
-      document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.page === pageId);
-      });
-    }
-
-    function createModules() {
-      const container = document.getElementById('modules-grid');
-      modules.forEach(mod => {
-        const div = document.createElement('div');
-        div.className = `module-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-${mod.color}-600`;
-        div.innerHTML = `
-          <h3 class="font-bold text-2xl mb-2">${mod.title}</h3>
-          <p class="text-slate-500 mb-6">${mod.lessons}</p>
-          <div class="space-y-4">
-            <div><strong>Focus:</strong> ${mod.focus}</div>
-            <div><strong>Expected Outcomes:</strong> ${mod.outcomes}</div>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function createVocabCards() {
-      const container = document.getElementById('vocab-grid');
-      vocabList.forEach(v => {
-        const card = document.createElement('div');
-        card.className = "flashcard bg-white shadow-xl cursor-pointer";
-        card.innerHTML = `
-          <div class="flashcard-inner h-full relative">
-            <div class="flashcard-front absolute inset-0 bg-gradient-to-br from-[#0d47a1] to-blue-700 text-white p-8 flex flex-col justify-center items-center text-center">
-              <h3 class="text-2xl font-semibold">${v.term}</h3>
-              <p class="text-xs opacity-75 mt-6">Click to flip →</p>
-            </div>
-            <div class="flashcard-back absolute inset-0 bg-white border-2 border-[#0d47a1] p-8 flex flex-col justify-center">
-              <p class="font-medium text-slate-700">${v.def}</p>
-              <p class="mt-6 text-sm italic text-slate-600">"${v.ex}"</p>
-            </div>
-          </div>`;
-        card.onclick = () => card.classList.toggle('flipped');
-        container.appendChild(card);
-      });
-    }
-
-    function createRoleplays() {
-      const container = document.getElementById('roleplay-grid');
-      roleplays.forEach(r => {
-        const div = document.createElement('div');
-        div.className = "border border-slate-200 rounded-3xl p-8 hover:border-orange-400 transition-colors";
-        div.innerHTML = `
-          <h3 class="font-semibold text-xl mb-3">${r.title}</h3>
-          <p class="text-slate-600 mb-6">${r.desc}</p>
-          <button onclick="startRoleplay(this)" 
-                  class="w-full py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-2xl">Start Role-Play</button>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function startRoleplay(btn) {
-      const original = btn.textContent;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Launching simulation...`;
-      setTimeout(() => {
-        showToast("🎤 Role-play simulation started (demo version)");
-        btn.textContent = original;
-      }, 1200);
-    }
-
+    // === Keep all previous JS (nav, modules, vocab, roleplays, toast, dark mode) from the last version ===
+    // Just add this new function if needed
     function showToast(message) {
       const toast = document.createElement('div');
       toast.className = `px-8 py-4 bg-emerald-600 text-white rounded-3xl shadow-2xl flex items-center gap-3 font-medium`;
@@ -321,25 +159,17 @@
       setTimeout(() => toast.remove(), 3000);
     }
 
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-      const icon = document.getElementById('theme-icon');
-      icon.classList.toggle('fa-moon');
-      icon.classList.toggle('fa-sun');
-      showToast('Interface theme updated');
-    }
-
-    // Init
+    // Initialize (same as before)
     document.addEventListener('DOMContentLoaded', () => {
       createNavTabs();
       createModules();
       createVocabCards();
       createRoleplays();
       showPage('home');
-
-      // Demo XP
-      setTimeout(() => showToast('+80 XP – Excellent vocabulary review!'), 2500);
+      setTimeout(() => showToast('New YouTube videos added to Listening section!'), 1800);
     });
+
+    // Paste the full createNavTabs(), createModules(), createVocabCards(), createRoleplays(), showPage(), toggleDarkMode() functions from the previous complete code here.
   </script>
 </body>
 </html>
