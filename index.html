@@ -1,355 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business English Hub – Mr. Hùng</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        .flip-card {
-            perspective: 1000px;
-            height: 160px;
-        }
-        .flip-card-inner {
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            backface-visibility: hidden;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-        .flip-card-back {
-            transform: rotateY(180deg);
-        }
-        .listening-card:hover {
-            transform: translateY(-8px);
-        }
-        .role-card {
-            transition: all 0.3s;
-        }
-        .role-card:hover {
-            transform: scale(1.03);
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
-
-<header class="bg-blue-950 text-white sticky top-0 z-50 shadow">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <i class="fa-solid fa-briefcase text-4xl text-orange-500"></i>
-            <div>
-                <h1 class="text-2xl font-bold">Business English Hub</h1>
-                <p class="text-xs text-blue-300">Mr. Hùng • Industrial Equipment Solutions</p>
-            </div>
-        </div>
-        <nav class="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#home" class="hover:text-orange-400">Home</a>
-            <a href="#modules" class="hover:text-orange-400">Modules</a>
-            <a href="#vocabulary" class="hover:text-orange-400">Vocabulary</a>
-            <a href="#practice" class="font-semibold text-orange-400">Practice</a>
-            <a href="#progress" class="hover:text-orange-400">Progress</a>
-        </nav>
-        <button onclick="toggleTheme()" class="text-2xl hover:text-orange-400">
-            <i id="theme-icon" class="fa-solid fa-moon"></i>
-        </button>
-    </div>
-</header>
-
-<main class="max-w-6xl mx-auto px-6 py-10">
-
-    <!-- WELCOME -->
-    <section id="home" class="bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-3xl p-12 mb-16">
-        <h2 class="text-5xl font-bold mb-4">Welcome back, Mr. Hùng!</h2>
-        <p class="text-xl text-blue-100">Your private Executive Business English program for confident communication with international suppliers.</p>
-    </section>
-
-    <!-- MODULES - FULL DETAILS -->
-    <section id="modules" class="mb-20">
-        <h2 class="text-3xl font-bold mb-10 text-center">Your 12-Lesson Program</h2>
-        
-        <div class="space-y-12">
-            <!-- Module 1 -->
-            <div class="bg-white rounded-3xl p-8 shadow">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-medium">Module 1</span>
-                    <h3 class="text-2xl font-bold">Professional Introductions and Business Foundations (Lessons 1–3)</h3>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Focus Areas</h4>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Self-introduction & company presentation</li>
-                            <li>• Describing your role and responsibilities</li>
-                            <li>• Small talk with German, Italian, Chinese partners</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Expected Outcomes</h4>
-                        <p class="text-gray-600">You will confidently introduce yourself and your company in meetings and networking events.</p>
-                        <div class="mt-6">
-                            <strong>Lessons:</strong><br>
-                            1. Powerful Self-Introductions<br>
-                            2. Talking about your company & products<br>
-                            3. Small talk & building rapport
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Module 2 -->
-            <div class="bg-white rounded-3xl p-8 shadow">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-medium">Module 2</span>
-                    <h3 class="text-2xl font-bold">Meetings and Project Communication (Lessons 4–6)</h3>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Focus Areas</h4>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Participating actively in meetings</li>
-                            <li>• Giving clear project updates</li>
-                            <li>• Asking for and giving clarification</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Expected Outcomes</h4>
-                        <p class="text-gray-600">You will handle weekly project meetings with confidence and reduce misunderstandings.</p>
-                        <div class="mt-6">
-                            <strong>Lessons:</strong><br>
-                            4. Meeting phrases & agenda<br>
-                            5. Project updates & status reports<br>
-                            6. Clarifying & confirming information
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Module 3 -->
-            <div class="bg-white rounded-3xl p-8 shadow">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-medium">Module 3</span>
-                    <h3 class="text-2xl font-bold">Technical Communication (Lessons 7–9)</h3>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Focus Areas</h4>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Describing equipment specifications</li>
-                            <li>• Explaining technical problems</li>
-                            <li>• Comparing products and solutions</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Expected Outcomes</h4>
-                        <p class="text-gray-600">You will discuss technical details clearly with engineers and suppliers.</p>
-                        <div class="mt-6">
-                            <strong>Lessons:</strong><br>
-                            7. Technical vocabulary & descriptions<br>
-                            8. Explaining problems & solutions<br>
-                            9. Comparing features (comparatives)
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Module 4 -->
-            <div class="bg-white rounded-3xl p-8 shadow">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-orange-100 text-orange-700 px-4 py-1 rounded-full text-sm font-medium">Module 4</span>
-                    <h3 class="text-2xl font-bold">International Business Interaction (Lessons 10–12)</h3>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Focus Areas</h4>
-                        <ul class="space-y-2 text-gray-600">
-                            <li>• Negotiations & bargaining</li>
-                            <li>• Hosting visitors & factory tours</li>
-                            <li>• Follow-up emails & networking</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg mb-3">Expected Outcomes</h4>
-                        <p class="text-gray-600">You will negotiate confidently and build strong relationships with international partners.</p>
-                        <div class="mt-6">
-                            <strong>Lessons:</strong><br>
-                            10. Negotiation language<br>
-                            11. Hosting & factory visits<br>
-                            12. Follow-up & relationship building
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LISTENING PRACTICE -->
-    <section id="practice" class="mb-20">
-        <h2 class="text-3xl font-bold mb-8">Listening & Speaking Practice</h2>
-        
-        <div class="listening-card bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-900 to-blue-800 text-white p-10">
-                <div class="flex items-center gap-5 mb-8">
-                    <div class="w-16 h-16 bg-orange-500 rounded-3xl flex items-center justify-center text-5xl">🎧</div>
-                    <div>
-                        <div class="uppercase text-orange-300 text-sm font-medium">A2 Listening • 6 minutes</div>
-                        <h3 class="text-4xl font-bold">Is London cheaper than New York?</h3>
-                        <p class="text-blue-100 mt-2">Comparatives practice – Very useful for price and quality discussions with suppliers</p>
-                    </div>
-                </div>
-
-                <div class="aspect-video bg-black rounded-3xl overflow-hidden mb-8">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7QmvIKaLhk4" 
-                        frameborder="0" allowfullscreen></iframe>
-                </div>
-
-                <button onclick="playAgain()" 
-                        class="w-full bg-white text-blue-900 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 hover:bg-orange-400 hover:text-white">
-                    <i class="fa-solid fa-play"></i> PLAY AUDIO AGAIN
-                </button>
-            </div>
-
-            <!-- Questions -->
-            <div class="p-10">
-                <h4 class="font-semibold mb-6 text-lg">Listen and choose the correct answer:</h4>
-                
-                <div class="space-y-10">
-                    <div>
-                        <p class="font-medium mb-3">1. Paul...</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q1" class="accent-orange-500"> A. is living in New York</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q1" class="accent-orange-500"> B. has been a few weeks in New York</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q1" class="accent-orange-500"> C. has family in New York</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q1" class="accent-orange-500"> D. has just moved to London</label>
-                        </div>
-                    </div>
-
-                    <!-- Questions 2-9 (same pattern) -->
-                    <div><p class="font-medium mb-3">2. The cost of an apartment in New York is _____ an apartment in London.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q2" class="accent-orange-500"> A. much higher than</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q2" class="accent-orange-500"> B. about the same as</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q2" class="accent-orange-500"> C. a little lower than</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q2" class="accent-orange-500"> D. much lower than</label>
-                        </div>
-                    </div>
-
-                    <!-- Repeat the same structure for questions 3 to 9 (shortened here for space - full version has all) -->
-                    <!-- In your final file, please copy the pattern for Q3 to Q9 exactly like above -->
-
-                    <div><p class="font-medium mb-3">9. Medical costs are _____ in the USA ____ in Britain.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q9" class="accent-orange-500"> A. much higher / than</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q9" class="accent-orange-500"> B. about the same / as</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q9" class="accent-orange-500"> C. a little lower / than</label>
-                            <label class="option flex items-center gap-3 bg-gray-50 p-4 rounded-2xl"><input type="radio" name="q9" class="accent-orange-500"> D. much lower / than</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-12 flex gap-4">
-                    <button onclick="checkAnswers()" 
-                            class="flex-1 bg-orange-500 text-white py-6 rounded-3xl font-bold text-lg">Submit Answers & See Score</button>
-                    <button onclick="showAnswerKey()" 
-                            class="flex-1 border-2 border-orange-500 text-orange-600 py-6 rounded-3xl font-bold text-lg">Show Answer Key</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VOCABULARY BANK - FLIP CARDS -->
-    <section id="vocabulary" class="mb-20">
-        <h2 class="text-3xl font-bold mb-8">Industrial Equipment Vocabulary Bank</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <!-- Flip Card 1 -->
-            <div class="flip-card bg-white rounded-3xl shadow cursor-pointer" onclick="this.classList.toggle('flipped')">
-                <div class="flip-card-inner relative w-full h-full">
-                    <div class="flip-card-front bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-3xl p-8 flex items-center justify-center text-center">
-                        <div>
-                            <p class="text-orange-300 text-sm">Term</p>
-                            <p class="text-2xl font-bold mt-2">Reliability</p>
-                        </div>
-                    </div>
-                    <div class="flip-card-back bg-white border border-gray-200 rounded-3xl p-8 flex flex-col justify-center">
-                        <p class="font-medium text-lg">Reliability</p>
-                        <p class="text-gray-600 mt-3">How consistently a machine works without breaking down.</p>
-                        <p class="text-xs text-orange-500 mt-6">"German machines usually have higher reliability than Chinese ones."</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add more flip cards here (I can give you 12–15 terms if you want) -->
-            <!-- For now, one example is shown. Duplicate the block and change words. -->
-
-        </div>
-    </section>
-
-    <!-- ROLE-PLAY SCENARIOS -->
-    <section class="mb-20">
-        <h2 class="text-3xl font-bold mb-8">Role-Play Scenarios</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="role-card bg-white p-8 rounded-3xl shadow hover:shadow-xl">
-                <h4 class="font-semibold text-lg mb-3">Supplier Negotiation (China)</h4>
-                <p class="text-gray-600">You need to negotiate a better price and shorter delivery time for 50 CNC machines.</p>
-                <button onclick="alert('Practice with your teacher: Use phrases like \"Would it be possible to...\", \"We are looking for a better price because...\"')" 
-                        class="mt-6 text-orange-500 font-medium">Start Role-Play →</button>
-            </div>
-            <div class="role-card bg-white p-8 rounded-3xl shadow hover:shadow-xl">
-                <h4 class="font-semibold text-lg mb-3">Technical Problem Discussion (Germany)</h4>
-                <p class="text-gray-600">A machine has a hydraulic leak. Explain the issue and ask for a solution.</p>
-                <button onclick="alert('Practice: \"We have noticed a problem with... Could you please advise?\"')" 
-                        class="mt-6 text-orange-500 font-medium">Start Role-Play →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROGRESS -->
-    <section id="progress" class="bg-white rounded-3xl p-10 shadow mb-20">
-        <h2 class="text-3xl font-bold mb-6">Your Progress</h2>
-        <div class="flex justify-between text-sm mb-4">
-            <div>Total XP: <span id="xp" class="font-bold text-orange-500">480</span></div>
-            <div>Level 3 • 12 lessons</div>
-        </div>
-        <div class="h-4 bg-gray-200 rounded-full">
-            <div class="h-full w-[65%] bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
-        </div>
-    </section>
-
-</main>
-
-<footer class="bg-blue-950 text-blue-300 py-10 text-center text-sm">
-    <p>Private Executive Coaching by Mr. Vincent Trazo</p>
-    <p class="mt-2">© 2026 Business English Hub – For Mr. Hùng</p>
-</footer>
-
-<script>
-    function toggleTheme() {
-        document.documentElement.classList.toggle('dark');
-        const icon = document.getElementById('theme-icon');
-        icon.classList.toggle('fa-moon');
-        icon.classList.toggle('fa-sun');
-    }
-
-    function playAgain() {
-        const iframe = document.querySelector('iframe');
-        iframe.src = iframe.src;
-    }
-
-    function checkAnswers() {
-        alert("✅ Well done, Mr. Hùng!\n\nYou can now check the Answer Key below.");
-    }
-
-    function showAnswerKey() {
-        alert(`ANSWER KEY - Is London cheaper than New York?\n\n1. B\n2. A\n3. A\n4. B\n5. C\n6. D\n7. A\n8. B\n9. A\n\nGreat practice for using comparatives in business!`);
-    }
-
-    console.log('%c✅ Full updated website with listening questions, answer key, modules, vocabulary & role-plays ready for Mr. Hùng!', 'color:#f97316; font-weight:bold');
-</script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102c46"><title>Business English Hub | Mr. Hùng</title>
+<style>
+:root{--navy:#102c46;--orange:#c65316;--paper:#f4f6f8;--line:#d7e0e8;--muted:#506377}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--navy);font:16px/1.6 system-ui,-apple-system,sans-serif}a{color:#a5410f}button,input,select,textarea{font:inherit}button,.button{cursor:pointer;border:1px solid var(--line);border-radius:9px;padding:.65rem 1rem;background:white;color:var(--navy);font-weight:650;text-decoration:none;display:inline-block}button:hover,.button:hover{background:#eef3f7}button.primary,.active{background:var(--navy)!important;color:white!important}button:disabled{opacity:.55;cursor:not-allowed}:focus-visible{outline:3px solid #dc702f;outline-offset:3px}header{background:var(--navy);color:white;padding:20px max(24px,calc((100vw - 1240px)/2));display:flex;justify-content:space-between;gap:24px;align-items:center}header strong{font-size:21px}header small{display:block;color:#c3d3e3}.brand{display:flex;align-items:center;gap:14px}.mark{background:#e97332;color:#102c46;border-radius:12px;padding:8px 14px;font-weight:900}header a{color:white}.wrap{max-width:1240px;margin:auto;padding:30px 24px}h1{font-size:clamp(29px,4vw,45px);letter-spacing:-1.5px;line-height:1.15;margin:12px 0}h2{font-size:25px;line-height:1.3}h3{font-size:19px}p{margin:.6rem 0 1rem}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:var(--orange)}.hero{display:grid;grid-template-columns:1fr 270px;gap:28px;align-items:center;margin-bottom:24px}.card,section.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:18px}.muted,small{color:var(--muted)}.notice{padding:12px 16px;background:#fff4e7;border-left:4px solid #d56729;border-radius:5px;font-size:14px}.layout{display:grid;grid-template-columns:265px minmax(0,1fr);gap:24px}aside{align-self:start;position:sticky;top:16px}aside .card{padding:16px}.lesson{display:block;width:100%;text-align:left;margin:7px 0;padding:10px 12px;font-size:14px}.lesson span{display:block;font-size:12px;font-weight:400}nav.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}nav.tabs button{font-size:14px}input:not([type=checkbox]):not([type=radio]),select,textarea{width:100%;padding:10px;border:1px solid #9cabb9;border-radius:8px;background:white;color:#102c46}textarea{min-height:130px;resize:vertical}label{display:block;font-weight:600;margin:12px 0 5px}label.inline{display:flex;gap:10px;align-items:start;font-weight:400}input[type=checkbox],input[type=radio]{margin-top:8px;accent-color:var(--orange)}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pill{display:inline-block;padding:3px 10px;border-radius:20px;background:#eaf0f5;font-size:12px;font-weight:700}.agenda{padding:0;list-style:none}.agenda li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:8px 0}.agenda b{white-space:nowrap;font-size:14px}.status{font-size:13px;min-height:22px}.good{color:#166444}.bad{color:#a32f25}.video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#eaf0f5}.video-placeholder{background:#eaf0f5;padding:30px;border-radius:12px;text-align:center}details{border:1px solid var(--line);border-radius:10px;padding:13px;margin:12px 0}summary{cursor:pointer;font-weight:650}.quiz-item{border-bottom:1px solid var(--line);padding:12px 0}progress{width:100%;height:14px;accent-color:var(--orange)}.big{font-size:35px;font-weight:800}.toolbar{padding:20px 0;border-top:1px solid var(--line);margin-top:25px}.help{font-size:14px}.hidden,[hidden]{display:none!important}footer{padding:28px;text-align:center;font-size:13px}.skip{position:absolute;left:-9999px}.skip:focus{left:10px;top:10px;background:white;padding:12px;z-index:5}.source-list a{overflow-wrap:anywhere}.break{white-space:pre-wrap;overflow-wrap:anywhere}audio{max-width:100%}@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:static}.hero{grid-template-columns:1fr}.cols{grid-template-columns:1fr}#lesson-list{display:grid;grid-template-columns:1fr 1fr;gap:5px}.lesson{margin:0}header{padding:15px 20px}.wrap{padding:22px 16px}.card,section.panel{padding:18px}}@media print{header,aside,.tabs,.toolbar,button,.no-print,iframe,.hero{display:none!important}.layout{display:block}.wrap{max-width:none;padding:0}.panel{border:0}textarea{height:180px}details{break-inside:avoid}body{background:white}}
+</style></head><body>
+<a class="skip" href="#workspace">Skip to lesson</a><header><div class="brand"><span class="mark">H.</span><div><strong>Business English Hub</strong><small>Mr. Hùng · coached by Mr. Vincent</small></div></div><a href="#tools">Save & share work</a></header>
+<div class="wrap"><div class="hero"><div><span class="eyebrow">Speak clearly. Write with purpose.</span><h1>Your next conversation<br>starts here.</h1><p class="muted">Practical English for supplier calls, business visits and everyday decisions. Resume Unit 3, with earlier learning close at hand.</p><span class="pill">12 lessons · 90 minutes each</span> <span class="pill">Units 3–6 + review</span></div><div class="card"><span class="eyebrow">Your practice</span><div class="big" id="progress-label">0 / 12</div><progress id="progress" max="12" value="0" aria-label="Lessons marked practised"></progress><small>Lessons marked practised. Completion is separate from mastery.</small></div></div>
+<p class="notice">Provisional 12-lesson plan: Mr. Vincent will confirm the remaining lesson count and the exact restart activity in Unit 3.</p>
+<div class="layout"><aside><div class="card"><span class="eyebrow">Course map</span><div id="lesson-list"></div></div><div class="help muted">Your drafts and scores stay in this browser. Export them to share with Mr. Vincent or move devices. This site has no private login or automatic submission service.</div></aside>
+<main id="workspace" tabindex="-1"><div class="card"><span id="lesson-meta" class="eyebrow"></span><h2 id="lesson-title"></h2><p id="lesson-outcome"></p><label class="inline"><input id="complete" type="checkbox"> I have practised this lesson</label><nav class="tabs" aria-label="Lesson activities" id="tabs"></nav><div id="save-status" class="status" role="status" aria-live="polite"></div></div><div id="content"></div></main></div>
+<section class="toolbar" id="tools"><h2>Your work, ready to share</h2><p class="help">Export creates a file containing all text, attempts and feedback. Send it yourself to Mr. Vincent. He can import it, add feedback, export it and send it back. Import replaces this browser’s course data after confirmation. Download recordings separately.</p><div class="row"><button id="export">Export all work</button><label class="button" for="import" style="margin:0">Import work / feedback</label><input id="import" type="file" accept=".json,application/json" hidden><button id="print">Print current activity</button><button id="reset">Reset this browser’s work</button></div><p id="tool-status" class="status" role="status"></p></section>
+</div><footer>Business English Hub · Original practice by Mr. Vincent · Market Leader Elementary curriculum reference<br>Use fictional or anonymised business details. YouTube playback needs an internet connection.</footer>
+<script id="course-data" type="application/json">{"lessons": [{"id": 1, "unit": 3, "title": "U1–2 retrieval + U3 diagnostic: introduce myself, describe my routine and identify a workplace problem", "activity": "Confirm stopping activity; baseline listening, introduction and email; identify gaps; improve a 50–70-word problem message", "focus": "Names/numbers and simple problem statements; clear pauses", "agenda": [["Restart check", 10], ["Baseline: listen, speak, email", 20], ["Problem language", 10], ["Dictation", 8], ["Break", 5], ["Shadowing", 8], ["Problem interview", 14], ["Improve email", 10], ["Exit check", 5]], "homework": "Tell support what is wrong. After the listening routine (5 min), write a 50–70-word email to Alex at a fictional supplier (8 min): introduce yourself as a sales manager; identify pump P20; explain that it does not start; say that a customer demonstration is tomorrow; ask for help. Check the subject, problem and request (2 min). Submit the draft; no full model is shown before an attempt.", "roles": ["Introduce your role. Explain one work routine and a problem with a delivery. Ask the supplier for help.", "You can deliver on Thursday, but you need the customer’s order number. Ask a follow-up about availability.", "Agree on a next step and repeat the date."]}, {"id": 2, "unit": 3, "title": "U3 Problems: describe what is wrong and its effect", "activity": "Adjectives and too/enough; review have and present-simple negatives/questions; problem-and-impact information gap; draft a 50–70-word support request", "focus": "Symptoms, quantities and negation; stress the problem and request", "agenda": [["Recall & review", 8], ["Scenario, vocabulary & language", 12], ["Listen for meaning", 10], ["Dictation", 10], ["Break", 5], ["Shadowing", 10], ["Speaking task", 15], ["Email workshop", 15], ["Exit check", 5]], "homework": "Explain the business impact. Listening routine (5 min). Write four complete sentences using these facts (4 min): delivery is three days late; the customer needs the equipment on Friday; two units are missing; the team cannot finish installation. Record a 30–45-second explanation and request a new delivery date (4 min). Check that you used a negative accurately and made one clear request (2 min). Live speaking next lesson is an alternative to recording.", "roles": ["Your order contains 15 pumps, but only 12 arrived. Ask for the missing pumps by Friday.", "Three pumps are still at the warehouse. Thursday delivery is possible if the address is confirmed today.", "Confirm quantity, address and delivery date."]}, {"id": 3, "unit": 3, "title": "U3 Problems: describe a simple workplace problem and ask questions", "activity": "Adjectives, too/enough, have, some/any, present-simple negatives/questions in short tasks; match problem details to enquiry questions; support-call information gap; draft a 50–70-word problem report", "focus": "Model/order numbers and symptoms; polite requests and question stress", "agenda": [["Recall & review", 8], ["Scenario, vocabulary & language", 12], ["Listen for meaning", 10], ["Dictation", 10], ["Break", 5], ["Shadowing", 10], ["Speaking task", 15], ["Email workshop", 15], ["Exit check", 5]], "homework": "Clarify the details. Listening routine (5 min). Turn each note into a polite question (4 min): model number; quantity ordered; delivery date; contact name. Record both sides of a short call in which you ask for repetition and confirm “fifteen, not fifty” (4 min). Check that the final quantity is unambiguous (2 min). Several polite answers are acceptable; teacher review is required.", "roles": ["The P20 pump does not start. The demonstration is tomorrow. Ask for support and an arrival time.", "A technician can visit at 09:30 or 14:00 tomorrow. Ask for the model and choose a time together.", "Repeat the model and the agreed appointment."]}, {"id": 4, "unit": 3, "title": "U3 Problems: resolve a misunderstanding and confirm the next action", "activity": "Clarify missing details in a supplier call; repeat back key information; switch roles and retry; revise a 60–80-word follow-up email; U3 check", "focus": "Distinguish numbers; “Could you repeat that?” and confirmation chunks", "agenda": [["Retrieval", 8], ["Language repair", 7], ["Listening & dictation", 10], ["Shadowing", 10], ["Break", 5], ["Role play", 20], ["Email revision", 20], ["Unit check", 10]], "homework": "Follow up after a support call. Listening routine (5 min). Write a 60–80-word email to Alex (8 min): thank Alex for the call; confirm that the replacement part arrives on Thursday; explain that the technician is available Friday morning; ask Alex to confirm the tracking number. Review one error from your first Unit 3 email and correct it here (2 min). Submit both versions if revising a draft.", "roles": ["Follow up on a support call. A replacement arrives Thursday; your technician is available Friday morning.", "You have the tracking number TR501. Ask whether someone can receive the delivery on Thursday.", "Confirm receipt and explain the next action."]}, {"id": 5, "unit": 4, "title": "U4 Travel: request and check a booking", "activity": "Travel details, can/can’t, there is/there are; compare factual availability cards; request a room and transport; draft a 60–80-word booking enquiry", "focus": "Dates, nights, arrival times and reference numbers; booking requests", "agenda": [["Recall & review", 8], ["Scenario, vocabulary & language", 12], ["Listen for meaning", 10], ["Dictation", 10], ["Break", 5], ["Shadowing", 10], ["Speaking task", 15], ["Email workshop", 15], ["Exit check", 5]], "homework": "Make a booking enquiry. Listening routine (5 min). Write a 60–80-word enquiry to a hotel (8 min): one guest, two nights from 12–14 November, a quiet room, Wi-Fi and airport pickup at 18:30. Ask about availability and the total price. Check all dates and numbers (2 min). Use fictional details; this email is a practice task and is not sent.", "roles": ["Book a quiet room for 12–14 November. You arrive at 18:30 and need airport pickup.", "A quiet room is available at USD 80/night. Pickup costs USD 20. Ask for flight details.", "Confirm two nights, pickup and total cost."]}, {"id": 6, "unit": 4, "title": "U4 Travel: repair and confirm arrangements; midpoint review U1–4", "activity": "Correct an itinerary; booking-change role play; revise a 60–80-word confirmation email; U4 check within the cumulative midpoint task; choose revision targets", "focus": "Booking-change details; checking arrangements aloud", "agenda": [["Retrieval", 5], ["Booking model", 10], ["Dictation", 8], ["Shadowing", 7], ["Break", 5], ["Booking-change role play", 15], ["Email revision", 15], ["Cumulative check", 20], ["Feedback", 5]], "homework": "Correct the arrangements. Listening routine (5 min). Reply to this fictional booking summary (8 min): “Arrival 13 November; three nights; pickup 08:30.” The correct details are arrival 12 November, two nights and pickup 18:30. Write a 60–80-word correction and ask for a revised confirmation. Check that all three errors are corrected politely (2 min).", "roles": ["Your booking wrongly says arrival 13 November, three nights and pickup at 08:30. Correct all three details.", "The correct request is 12 November, two nights, pickup 18:30. Apologise and read back the corrected booking.", "Agree on a corrected written confirmation."]}, {"id": 7, "unit": 5, "title": "U5 Food and entertaining: invite and host a business visitor", "activity": "Food vocabulary, countable/uncountable nouns, some/any; ask about dietary needs without assumptions; restaurant information gap; draft a 60–80-word invitation", "focus": "Guest numbers, menu items and times; offers and polite responses", "agenda": [["Recall & review", 8], ["Scenario, vocabulary & language", 12], ["Listen for meaning", 10], ["Dictation", 10], ["Break", 5], ["Shadowing", 10], ["Speaking task", 15], ["Email workshop", 15], ["Exit check", 5]], "homework": "Invite a visitor. Listening routine (5 min). Write a 60–80-word invitation to a supplier visiting Hanoi (8 min): invite them to dinner on Tuesday at 19:00, name a fictional restaurant, explain that it is near the hotel, and ask about dietary requirements. Check the invitation, time, place and question (2 min).", "roles": ["Invite a visitor to dinner Tuesday at 19:00. Ask about dietary needs and preferences.", "You need vegetarian food, prefer somewhere quiet and are staying at City Hotel.", "Choose a suitable venue and confirm time."]}, {"id": 8, "unit": 5, "title": "U5 Food and entertaining: agree on a suitable restaurant", "activity": "Use simple preferences and reasons; choose a venue from different constraint cards; simulated booking call; revise a 60–80-word invitation with confirmed details; U5 check", "focus": "Booking details and dietary requirements; decision-making chunks", "agenda": [["Retrieval", 8], ["Language repair", 7], ["Listening & dictation", 10], ["Shadowing", 10], ["Break", 5], ["Role play", 20], ["Email revision", 20], ["Unit check", 10]], "homework": "Choose a suitable restaurant. Listening routine (5 min). Read the fictional options (2 min): A—quiet, vegetarian dishes available, VND 350,000/person; B—noisy, no vegetarian dishes, VND 250,000/person. Your guest needs vegetarian food and the budget is VND 400,000/person. Record a 30-second recommendation with two reasons (3 min). Write a 40–60-word confirmation to the guest (3 min), then check that it fits both constraints (2 min). A is the suitable choice; assess language separately from the choice.", "roles": ["Choose between A: quiet, vegetarian options, VND 350,000/person; B: noisy, no vegetarian food, VND 250,000/person. Budget: VND 400,000/person.", "You are the visitor: vegetarian, and you want to discuss business during dinner. Ask why this restaurant is suitable.", "Give two reasons and make a reservation."]}, {"id": 9, "unit": 6, "title": "U6 Buying and selling: describe a product and a previous purchase", "activity": "Product/service vocabulary; selected past-simple forms and past-time expressions; describe a fictional equipment purchase; ask for product facts; draft a 70–90-word enquiry referencing a previous purchase", "focus": "Quantities, prices and model numbers; sentence stress and useful past forms", "agenda": [["Recall & review", 8], ["Scenario, vocabulary & language", 12], ["Listen for meaning", 10], ["Dictation", 10], ["Break", 5], ["Shadowing", 10], ["Speaking task", 15], ["Email workshop", 15], ["Exit check", 5]], "homework": "Describe a previous purchase. Listening routine (5 min). Use this fictional product card (2 min): P20 pump; 12 kg; 220 V; one-year warranty; purchased last month for USD 450. Record a 45-second product description including when you bought it (3 min). Write three questions asking about spare parts, delivery and installation support (3 min). Check past tense and the figures (2 min). Treat specifications as language-practice data, not technical advice.", "roles": ["Describe P20: 12 kg, 220 V, one-year warranty. You bought it last month for USD 450. Ask about spare parts.", "You can supply parts in five working days. Ask how many the customer needs and when.", "Explain a past purchase and ask three useful questions."]}, {"id": 10, "unit": 6, "title": "U6 Buying and selling: explain a purchasing choice and follow up", "activity": "Compare factual specification cards using simple sentences; describe what was bought and why; supplier enquiry with an unexpected follow-up; revise a 70–90-word email; U6 check", "focus": "Price/quantity accuracy; pausing through specifications and purchase history", "agenda": [["Retrieval", 8], ["Language repair", 7], ["Listening & dictation", 10], ["Shadowing", 10], ["Break", 5], ["Role play", 20], ["Email revision", 20], ["Unit check", 10]], "homework": "Enquire about another order. Listening routine (5 min). Write a 70–90-word email to the supplier (8 min): refer to last month's purchase of one P20 pump, ask for a quotation for three more, ask whether installation support is available, and request delivery by 20 November. Check product, quantity, deadline and next action (2 min).", "roles": ["You bought one P20 last month and want three more by 20 November. Ask for a quotation and installation support.", "Each pump is USD 450; installation support is USD 50 per order. Delivery by 20 November is possible if confirmed by the 15th.", "Confirm quantity, costs and deadline."]}, {"id": 11, "unit": 3, "title": "U1–6 consolidation: complete a connected workplace task with fewer prompts", "activity": "Visitor-and-supplier scenario: introduce, arrange, identify a problem and follow up; targeted practice from the error log; rehearsal assessment using a fresh scenario", "focus": "Weakest listening details; a short unprepared explanation after shadowing", "agenda": [["Mixed retrieval", 10], ["Error workshop", 10], ["Dictation", 10], ["Shadowing", 10], ["Break", 5], ["Integrated role play", 20], ["Email rehearsal", 20], ["Priorities", 5]], "homework": "Rehearse independently. Listening routine using your weakest verified unit clip (5 min). Read once, then close these fictional notes: supplier visiting 18 November; meeting at 10:00; demonstration room B; one pump unavailable; replacement requested for 17 November. Give a 45-second spoken update from memory (3 min). Write a 60–80-word follow-up email (5 min); check the four dates/time/place details and clear request (2 min). This is rehearsal, not the final test scenario.", "roles": ["Supplier visit: 18 November, 10:00, room B. One pump is unavailable. Request a replacement by 17 November.", "You can deliver the replacement on 16 November. Ask who will receive it and whether the meeting room has changed.", "Give a clear update and follow-up email."]}, {"id": 12, "unit": 3, "title": "U1–6 final assessment and next-step planning", "activity": "Fresh integrated scenario; listening, dictation, functional language, independent email and spontaneous conversation; feedback and personal revision plan", "focus": "Assessment uses independent listening and speaking; shadowing occurs only after scoring", "agenda": [["Instructions", 5], ["Listening & dictation", 15], ["Functional language", 10], ["Break", 5], ["Independent email", 20], ["Speaking", 15], ["Feedback & repair", 10], ["Revision plan", 10]], "homework": "Repair and retry. Listening routine focused on one difficulty identified in feedback (5 min). Choose one email problem from the final assessment, revise that section and highlight your changes (5 min). Give a fresh 45-second response to the teacher's follow-up question or restate the scenario with one changed detail (3 min). Write one specific practice goal for the next week (2 min). Retain the independent assessment attempt and score; this is a separate improvement attempt.", "roles": ["Assessment: a supplier visits on 22 November at 09:00. Three P20 pumps were ordered; two arrived. Ask for the missing pump by 21 November and arrange a vegetarian lunch.", "Ask the learner to clarify the quantity and confirm meeting details. Then announce that the delivery can arrive only at 16:00 on 21 November; ask whether this works.", "Independent introduction, clarification, problem-solving and a follow-up email."]}], "videos": ["wHWQNDsGSP0", "EbwGFKUEklk", "WrvYR8nH6EE", "ARhZitk6i_M", "29aO7xm4w58", "cHseQBTPYn4", "uPkrp-_lZfg", "TxtxbGzcoIU", "9nqAyE9hYnk", "xcRm1Z7_tcI", "JyzAlte5eT8", "4CoqluKEq5E"], "questions": [[3, "The pump ___ start.", ["doesn’t", "don’t", "isn’t"], 0, "Use does not + base verb with a singular subject."], [3, "You heard 50 but are unsure. What should you say?", ["Send fifty now.", "Could you confirm: fifteen or fifty?", "Yes, I understand."], 1, "Check the uncertain detail before acting."], [3, "We ordered 15 pumps; 12 arrived. How many are missing?", ["12", "15", "3"], 2, "15 minus 12 is 3."], [3, "Choose a clear subject line for a missing-parts email.", ["Hello", "Missing parts — order P20", "Please read this now!!!"], 1, "Name the issue and relevant order/product."], [3, "The room is ___ small for ten people.", ["enough", "too", "any"], 1, "Too + adjective expresses a problem with degree."], [4, "___ any rooms available?", ["Are there", "Is there", "There are"], 0, "Use Are there with plural rooms in a question."], [4, "A booking is for 12–14 November. How many nights?", ["Three", "Two", "Four"], 1, "The nights are the 12th and 13th."], [4, "Which request checks an arrangement?", ["I never travel.", "Please confirm the pickup time.", "The hotel was nice."], 1, "Confirm asks the recipient to verify a detail."], [5, "Do you have ___ vegetarian dishes?", ["any", "a", "much"], 0, "Any is natural in this plural question."], [5, "Which is an uncountable noun here?", ["chair", "guest", "water"], 2, "Water is normally uncountable; use some water."], [5, "What should you ask before booking dinner for a visitor?", ["Why are you late?", "Do you have any dietary requirements?", "You eat everything, right?"], 1, "Ask rather than assume."], [6, "We ___ three pumps last month.", ["buy", "bought", "buying"], 1, "Bought is the past simple of buy."], [6, "Which expression refers to the past?", ["tomorrow", "every day", "last week"], 2, "Last week refers to a completed past period."], [6, "A quotation is usually information about…", ["a proposed price", "a passport", "a meal preference"], 0, "A quotation states the proposed cost of goods or services."], [6, "Three pumps cost USD 450 each. Total before other fees?", ["USD 900", "USD 1,350", "USD 450"], 1, "3 × 450 = 1,350."]]}</script><script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('course-data').textContent),KEY='hung-business-course-v2';
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let state={version:2,current:1,lessons:{}},tab='Lesson',recorder=null,stream=null,recordURL=null,recordBlob=null,tick=null,seconds=0,loadError=false;
+try{const saved=localStorage.getItem(KEY);if(saved)state=validate(JSON.parse(saved));}catch(e){loadError=true;}
+function validate(x){if(!x||x.version!==2||!Number.isInteger(x.current)||x.current<1||x.current>12||!x.lessons||Array.isArray(x.lessons)||typeof x.lessons!=='object')throw Error('Not a supported course export.');const out={version:2,current:x.current,lessons:{}};for(const [id,r] of Object.entries(x.lessons)){if(!/^(?:[1-9]|1[0-2])$/.test(id)||!r||typeof r!=='object'||Array.isArray(r))throw Error('Invalid lesson data.');let z={};for(const key of ['subject','email','dictation','correction','reflection','homework','feedback','notes','start','end','listenMark','emailMark','speakMark']){if(r[key]!==undefined){if(typeof r[key]!=='string'||r[key].length>100000)throw Error('Invalid text field.');z[key]=r[key];}}if(r.video!==undefined){if(!Number.isInteger(r.video)||r.video<0||r.video>11)throw Error('Invalid video.');z.video=r.video;}for(const k of ['complete','shadowDone'])if(r[k]!==undefined){if(typeof r[k]!=='boolean')throw Error('Invalid completion state.');z[k]=r[k];}for(const k of ['drafts','attempts']){if(r[k]!==undefined){if(!Array.isArray(r[k])||r[k].length>300||r[k].some(v=>typeof v!=='string'||v.length>100000))throw Error('Invalid history.');z[k]=r[k];}}out.lessons[id]=z;}return out;}
+function current(){return DATA.lessons[state.current-1];}function work(){return state.lessons[state.current]||(state.lessons[state.current]={});}
+function status(text,bad=false){$('save-status').textContent=text;$('save-status').className='status '+(bad?'bad':'good');}
+function save(){if(loadError){status('Stored data could not be read. Export a raw backup below before resetting; current edits are only in memory.',true);return false;}try{localStorage.setItem(KEY,JSON.stringify(state));status('Saved in this browser · '+new Date().toLocaleTimeString());return true;}catch(e){status('Could not save locally. Export your work before leaving.',true);return false;}}
+function field(id,label,lines=true){return `<label for="${id}">${label}</label>${lines?`<textarea id="${id}">${esc(work()[id]||'')}</textarea>`:`<input id="${id}" value="${esc(work()[id]||'')}">`}`;}
+function bindFields(){document.querySelectorAll('#content textarea,#content input[data-save],#content input:not([type=radio]):not([type=checkbox]):not([type=file])').forEach(el=>{el.addEventListener('input',()=>{work()[el.id]=el.value;save();if(el.id==='email')wordCount();});});}
+function stopMedia(){if(recorder&&recorder.state==='recording')recorder.stop();if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;clearInterval(tick);tick=null;if(recordURL)URL.revokeObjectURL(recordURL);recordURL=null;recordBlob=null;}
+function navigate(id){if(recorder&&recorder.state==='recording'){status('Stop and download your recording before changing lessons.',true);return;}if(recordBlob&&!confirm('Download your recording first if you want to keep it. Continue?'))return;stopMedia();state.current=id;save();render();$('workspace').focus();}
+function progress(){const count=Object.values(state.lessons).filter(x=>x.complete).length;$('progress').value=count;$('progress-label').textContent=count+' / 12';}
+function render(){progress();$('lesson-list').innerHTML=DATA.lessons.map(l=>`<button class="lesson ${l.id===state.current?'active':''}" data-lesson="${l.id}" ${l.id===state.current?'aria-current="step"':''}>${String(l.id).padStart(2,'0')} · ${l.id===12?'Final assessment':l.id===11?'Review & rehearsal':'Unit '+l.unit}<span>${esc(l.title.split(':')[0])}${state.lessons[l.id]?.complete?' · Practised':''}</span></button>`).join('');document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>navigate(Number(b.dataset.lesson)));$('lesson-meta').textContent='Lesson '+state.current+' · 90 minutes';$('lesson-title').textContent=current().title;$('lesson-outcome').textContent=current().activity;$('complete').checked=!!work().complete;$('tabs').innerHTML=['Lesson','Listen & shadow','Email','Homework','Check & review','Resources'].map(t=>`<button ${tab===t?'aria-current="page" class="active"':''} data-tab="${t}">${t}</button>`).join('');document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(recordBlob||recorder?.state==='recording'){status('Download/delete or stop the recording before changing activities.',true);return;}stopMedia();tab=b.dataset.tab;render();});renderTab();if(loadError)status('Stored data needs recovery. Use Export raw backup before reset.',true);}
+function panel(title,body){return `<section class="panel"><h2>${title}</h2>${body}</section>`;}
+function renderTab(){const l=current(),w=work();let html='';
+if(tab==='Lesson'){html=panel('A clear plan for today',`<ol class="agenda">${l.agenda.map(([a,m])=>`<li><span>${esc(a)}</span><b>${m} min</b></li>`).join('')}</ol><div class="row no-print"><label for="timer-min">Practice timer (minutes)</label><input id="timer-min" type="number" min="1" max="90" value="5" style="width:85px"><button id="timer-start">Start timer</button><button id="timer-stop">Pause</button><output id="timer" aria-live="off">05:00</output></div><p class="help">Timer is a practice aid; switching activities stops it. Work is preserved.</p>`)+panel('Talk it through',`<p><strong>Your role:</strong> ${esc(l.roles[0])}</p><details><summary>Mr. Vincent’s role card</summary><p>${esc(l.roles[1])}</p></details><p><strong>Success looks like:</strong> ${esc(l.roles[2])}</p><p>Prepare for two minutes. Speak with your teacher, get feedback, then try again with one detail changed.</p>${field('notes','My useful phrases / next-step notes')}`);}
+if(tab==='Listen & shadow'){const v=w.video??(l.unit-1);html=panel('Listen → notice → repeat',`<p>${esc(l.focus)}</p><label for="video">YouTube resource</label><select id="video">${DATA.videos.map((id,i)=>`<option value="${i}" ${v===i?'selected':''}>Resource ${i+1}${i===2?' · Unit 3: Problems':' · verify unit before use'}</option>`).join('')}</select><p class="help">Mr. Vincent supplied these resources. Only resource 3’s Unit 3 title has been confirmed; recording content and timestamps still need matching to the book. This activity uses self-correction, not an automatic listening score.</p><div id="player" class="video-placeholder"><p>Load the selected YouTube video when you are ready.</p><button id="load-video">Load video</button></div><p><a id="youtube" href="https://www.youtube.com/watch?v=${DATA.videos[v]}" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a> if playback here is unavailable.</p><div class="cols">${field('start','Segment start (seconds)',false)}${field('end','Segment end (seconds)',false)}</div><button id="segment">Play selected segment</button><p class="help">Choose a clear 15–25-second extract. Enter whole seconds; end must be after start.</p><ol><li>Listen once for meaning.</li><li>Replay up to three times; type the words you hear. Mark uncertain words with (?).</li><li>Match the track to the coursebook script with your teacher. Keep your first attempt and write a correction below.</li><li>Mark pauses with /, then shadow twice just behind the speaker.</li><li>Use one phrase in a new sentence about your work.</li></ol>${field('dictation','My first dictation')}${field('correction','My corrected version / uncertain words')}${field('reflection','A useful phrase and my own new sentence')}<label class="inline"><input id="shadowDone" type="checkbox" ${w.shadowDone?'checked':''}> I practised shadowing twice</label><div class="row"><button id="record">Record my voice</button><button id="record-stop" disabled>Stop recording</button></div><p id="record-status" class="status" role="status">Recording is optional. Practise aloud if the microphone is unavailable. Recordings stay in memory: download before leaving this activity.</p><audio id="record-audio" controls hidden></audio><div id="record-actions" hidden><a id="record-download" class="button">Download recording</a> <button id="record-delete">Delete recording</button></div>`);}
+if(tab==='Email'){html=panel('Write a useful business email',`<p>${esc(l.roles[0])}</p><p><strong>Email task:</strong> write to the other person after the conversation. Include the purpose, required details and one clear next action. Target ${l.id<5?'50–80':'60–90'} words; meeting the purpose matters more than the exact count.</p>${field('subject','Subject',false)}${field('email','Email body')}<p id="word-count" class="help"></p><div class="row"><button id="email-check">Check structure</button><button id="snapshot">Save draft version</button></div><p id="email-feedback" role="status" class="help"></p><details><summary>Phrase support (practice only)</summary><p>Dear … / I am writing about … / We ordered … / Could you please confirm …? / Please let me know … / Thank you for your help. / Best regards, …</p></details><p class="help">Checklist support does not assess grammar or meaning. Browser spelling suggestions may be available. Teacher feedback is in Check & review.</p><h3>Draft history</h3><div id="drafts">${(w.drafts||[]).map(d=>`<details><summary>Saved version</summary><p class="break">${esc(d)}</p></details>`).join('')||'<p class="muted">Save a version before making your next revision.</p>'}</div>`);}
+if(tab==='Homework'){html=panel('15 minutes of purposeful practice',`<p class="break">${esc(l.homework)}</p><details><summary>The five-minute listening routine</summary><p>Choose a teacher-verified 15–25-second YouTube segment. Record the timestamps, listen, dictate two sentences, check the matched script and shadow twice. Use the Listen & shadow tab to save this work. If no verified segment is available, complete the writing/speaking task first.</p></details>${field('homework','My homework response / speaking notes')}<p class="help">Use Export all work below to send this response to Mr. Vincent. Recording downloads are separate.</p>`);}
+if(tab==='Check & review'){const pool=questions();html=panel(l.id===12?'Final language check · 15 marks':'Retrieval check · original practice',`<p>${l.id===12?'Complete independently. This checks functional language only.':'Choose every answer, then check and read the explanations. These questions are independent of the YouTube audio.'}</p><form id="quiz">${pool.map(([unit,q,opts],i)=>`<fieldset class="quiz-item"><legend>${i+1}. ${esc(q)}</legend>${opts.map((o,k)=>`<label class="inline"><input type="radio" name="q${i}" value="${k}">${esc(o)}</label>`).join('')}<p id="answer-${i}" class="help"></p></fieldset>`).join('')}<button class="primary" type="submit">Check answers</button></form><p id="quiz-result" role="status"></p><details><summary>Saved attempts</summary><div>${(w.attempts||[]).map(a=>`<p>${esc(a)}</p>`).join('')||'No attempts yet.'}</div></details>`)+panel('Teacher feedback & revision',`<p class="help">This is a shared-device/manual review area, not a secure teacher account. Import the learner’s export, review it, then export feedback to return. All marks must reflect actual work.</p>${field('feedback','Mr. Vincent’s feedback — one strength, two priorities')}<p>Revision loop: correct the two priorities, try fresh content and keep both attempts. A low practice score is a revision signal, not a course fail.</p>${l.id===12?assessment():''}`);}
+if(tab==='Resources'){html=panel('Your listening library',`<p>Teacher-supplied links. Resource numbers follow the supplied list, not verified unit labels. Use the full books privately to check track references and scripts.</p><ol class="source-list">${DATA.videos.map((v,i)=>`<li><a href="https://www.youtube.com/watch?v=${v}" target="_blank" rel="noopener noreferrer">Resource ${i+1}${i===2?' — Unit 3: Problems':''} ↗</a></li>`).join('')}</ol><details><summary>Previous supplementary practice</summary><a href="https://www.youtube.com/watch?v=7QmvIKaLhk4" target="_blank" rel="noopener noreferrer">Earlier comparatives video ↗</a><p>The previous page’s incomplete quiz and unverified key have been retired.</p></details>`)+panel('About this course',`<p>Curriculum references: Market Leader Elementary, third edition — Course Book, Teacher’s Resource Book and Scope and Sequence. Homework, role cards and language checks here are original adaptations.</p><p>Resume within Unit 3. Units 1–2 are prior learning for retrieval. The provisional 18-hour block covers Units 3–6, rehearsal and assessment. Lesson count can be adjusted after the teacher confirms remaining sessions.</p><p>Materials are public on GitHub Pages. Responses stay in your browser until you export and share them. No automatic grammar, pronunciation or teacher-scoring service is connected.</p>`);}
+$('content').innerHTML=html;bindFields();wireTab();}
+function questions(){const l=current();return DATA.questions.filter(q=>l.id>=11||l.id===6?q[0]<= (l.id===6?4:6):q[0]===l.unit);}
+function wordCount(){const n=($('email')?.value.trim().match(/\S+/g)||[]).length;$('word-count').textContent=n+' words · Draft saved as you type';}
+function assessment(){return `<h3>Final assessment record</h3><p>60 assessed minutes within the 90-minute lesson. Listening/dictation 20, language 15, email 30, speaking 35. Record productive work manually; a blank is pending, not zero.</p><details><summary>Teacher administration & original listening task</summary><p>For teacher-led use; these notes are visible in this practice site. Close this section before the independent attempt. Do not treat client-side answers as a secure exam.</p><p>Read twice: “Hello, this is Anna from Apex Supplies. I am calling about order P20. You ordered three pumps, but only two arrived. The missing pump will arrive on Friday at four in the afternoon. Our technician, Minh, can visit on Monday at nine. Please confirm the delivery address by email today.”</p><p>Ask these ten questions orally (one mark each): caller’s name; company; order code; quantity ordered; quantity received; missing quantity; delivery day; delivery time; technician’s name; technician’s visit day. Key: Anna; Apex Supplies; P20; three; two; one; Friday; 16:00 / four in the afternoon; Minh; Monday.</p><p>Dictate: “Please confirm the delivery address and contact number by email.” Read once whole, once in chunks and once to check. Award one mark for each of the ten words: Please / confirm / the / delivery / address / and / contact / number / by / email. Ignore case and punctuation. Total listening/dictation: 20.</p><p>Email: use the fresh Lesson 12 role scenario, 20 minutes, without phrase support. Speaking: 15 minutes including preparation and an unexpected follow-up. Email rubric: task achievement, organisation, grammar, vocabulary/tone, spelling/punctuation — each 0–3; multiply sum by 2. Speaking: task achievement, interaction, intelligibility, fluency, language control — each 0–3; divide sum by 15 and multiply by 35.</p><p>Band anchors: 0 no usable evidence; 1 limited success/frequent support; 2 mostly successful/some errors; 3 independently effective for this elementary task. This is a teacher-designed course check, not a CEFR certification.</p></details><div class="cols">${field('listenMark','Teacher listening/dictation mark /20',false)}${field('emailMark','Teacher email mark /30',false)}${field('speakMark','Teacher speaking mark /35',false)}</div><button id="total">Calculate course result</button><p id="total-result" role="status"></p>`;}
+function wireTab(){if(tab==='Lesson'){$('timer-start').onclick=()=>{const m=Number($('timer-min').value);if(!Number.isInteger(m)||m<1||m>90){status('Choose 1–90 whole minutes.',true);return;}clearInterval(tick);seconds=m*60;showTime();tick=setInterval(()=>{seconds--;showTime();if(seconds<=0){clearInterval(tick);status('Practice time is up. Your work is preserved.');}},1000);};$('timer-stop').onclick=()=>{clearInterval(tick);tick=null;};}
+if(tab==='Email'){wordCount();$('email-check').onclick=()=>{const text=$('email').value;let todo=[];if(!$('subject').value.trim())todo.push('Add a useful subject.');if(!/\b(dear|hello|hi)\b/i.test(text))todo.push('Check your greeting.');if(!/\b(regards|thanks|thank you|sincerely|best)\b/i.test(text))todo.push('Check your closing.');$('email-feedback').textContent=todo.length?todo.join(' '):'Basic conventions detected. Now check the required facts, purpose, tone and next action with your teacher. This is not a grammar score.';};$('snapshot').onclick=()=>{if(!$('email').value.trim()){status('Write an email before saving a version.',true);return;}const w=work();w.drafts=w.drafts||[];if(w.drafts.length>=300){status('Draft history is full. Export your work first.',true);return;}w.drafts.push(new Date().toLocaleString()+'\nSubject: '+w.subject+'\n'+w.email);save();renderTab();};}
+if(tab==='Listen & shadow'){$('video').onchange=()=>{work().video=Number($('video').value);save();$('youtube').href='https://www.youtube.com/watch?v='+DATA.videos[work().video];$('player').innerHTML='<p>Selected resource changed. Load it when ready.</p><button id="load-video">Load video</button>';$('load-video').onclick=()=>loadVideo();};$('load-video').onclick=()=>loadVideo();$('segment').onclick=()=>{const a=$('start').value,b=$('end').value;if(!/^\d+$/.test(a)||!/^\d+$/.test(b)||Number(b)<=Number(a)||Number(b)>86400){status('Enter valid whole seconds; end must be after start and within 24 hours.',true);return;}loadVideo(Number(a),Number(b));};$('shadowDone').onchange=()=>{work().shadowDone=$('shadowDone').checked;save();};$('record').onclick=record;$('record-stop').onclick=()=>{if(recorder?.state==='recording')recorder.stop();};$('record-delete').onclick=()=>{if(recordURL)URL.revokeObjectURL(recordURL);recordURL=null;recordBlob=null;$('record-audio').removeAttribute('src');$('record-audio').hidden=true;$('record-actions').hidden=true;$('record-status').textContent='Recording deleted.';};}
+if(tab==='Check & review'){$('quiz').onsubmit=e=>{e.preventDefault();const pool=questions(),form=new FormData($('quiz'));if(pool.some((_,i)=>!form.has('q'+i))){$('quiz-result').textContent='Answer every question before checking.';return;}let score=0;pool.forEach((q,i)=>{const ok=Number(form.get('q'+i))===q[3];score+=ok?1:0;$('answer-'+i).textContent=(ok?'Correct. ':'Review: ')+q[4];});const msg=score+' / '+pool.length+' · '+(score/pool.length>=.7?'Ready to practise this in conversation.':'Review the explanations, then try again.');$('quiz-result').textContent=msg;const w=work();w.attempts=w.attempts||[];if(w.attempts.length<300)w.attempts.push(new Date().toISOString()+' | '+score+'/'+pool.length);save();};if($('total'))$('total').onclick=()=>{const w=work(),a=Number(w.listenMark),b=Number(w.emailMark),c=Number(w.speakMark),attempt=w.attempts?.at(-1),m=attempt?.match(/\| (\d+)\/15$/);if(!m||[w.listenMark,w.emailMark,w.speakMark].some(v=>v===undefined||v.trim()==='')){$('total-result').textContent='Pending: finish the language check and enter all three teacher marks.';return;}if(![a,b,c].every(Number.isFinite)||a<0||a>20||b<0||b>30||c<0||c>35){$('total-result').textContent='Marks must be within 0–20, 0–30 and 0–35.';return;}const n=Number(m[1])+a+b+c;$('total-result').textContent=n.toFixed(1)+' / 100 · '+(n>=70&&b>=18&&c>=21?'Proposed course threshold met.':'Targeted revision needed.')+' Uses the latest language attempt; this may be a retry. Teacher confirms independent assessment evidence.';};}}
+function showTime(){$('timer').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}
+function loadVideo(start,end){const v=Number($('video').value);$('player').className='';$('player').innerHTML=`<iframe class="video" title="YouTube resource ${v+1}" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube-nocookie.com/embed/${DATA.videos[v]}${start!==undefined?'?start='+start+'&end='+end:''}" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>`;}
+async function record(){if(recordBlob){$('record-status').textContent='Download or delete the current recording before recording again.';return;}if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){$('record-status').textContent='Recording is unavailable here. Practise aloud or use your phone recorder.';return;}$('record').disabled=true;try{stream=await navigator.mediaDevices.getUserMedia({audio:true});if(tab!=='Listen & shadow'){stream.getTracks().forEach(t=>t.stop());return;}const chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};recorder.onstop=()=>{stream?.getTracks().forEach(t=>t.stop());recordBlob=new Blob(chunks,{type:recorder.mimeType});recordURL=URL.createObjectURL(recordBlob);if($('record-audio')){$('record-audio').src=recordURL;$('record-audio').hidden=false;$('record-actions').hidden=false;$('record-download').href=recordURL;$('record-download').download='hung-lesson-'+state.current+(recorder.mimeType.includes('mp4')?'.m4a':'.webm');$('record-stop').disabled=true;$('record').disabled=false;$('record-status').textContent='Recording ready. Download it before leaving this activity.';}};recorder.start();$('record-stop').disabled=false;$('record-status').textContent='Recording… click Stop when finished.';}catch(e){stream?.getTracks().forEach(t=>t.stop());if($('record')){$('record').disabled=false;$('record-status').textContent='Microphone unavailable or permission declined. Practise aloud or use your phone recorder.';}}}
+function download(data,name,type='application/json'){const u=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+$('complete').onchange=()=>{work().complete=$('complete').checked;save();progress();render();};
+$('export').onclick=()=>{download(JSON.stringify(state,null,2),'hung-course-work.json');$('tool-status').textContent='Export created. Recordings must be downloaded separately.';};
+$('import').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>10000000)throw Error('File is too large.');const next=validate(JSON.parse(await f.text()));if(!confirm('Replace this browser’s work with this export? Export your current work first if you need a backup.'))return;stopMedia();state=next;loadError=false;save();render();$('tool-status').textContent='Work imported. Review the selected lesson.';}catch(err){$('tool-status').textContent='Import rejected: '+err.message+' Current work is unchanged.';}finally{e.target.value='';}};
+$('print').onclick=()=>window.print();$('reset').onclick=()=>{if(!confirm('Delete all saved course work in this browser? Export first to keep a copy.'))return;stopMedia();state={version:2,current:1,lessons:{}};loadError=false;save();render();$('tool-status').textContent='Local course work reset.';};
+if(loadError){const b=document.createElement('button');b.textContent='Export raw backup';b.onclick=()=>{try{download(localStorage.getItem(KEY)||'','hung-recovery.txt','text/plain');}catch(e){$('tool-status').textContent='Browser storage is unavailable.';}};$('tools').append(b);}
+window.addEventListener('beforeunload',e=>{if(recordBlob||recorder?.state==='recording'){e.preventDefault();e.returnValue='';}});
+render();
+</script></body></html>
